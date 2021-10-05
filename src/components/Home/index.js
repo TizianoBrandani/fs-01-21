@@ -1,5 +1,7 @@
 import React from "react";
+import { Category, toCategory } from "../../models/Category";
 import { Post, toPost } from "../../models/Post";
+
 import { Link } from "react-router-dom";
 
 export default class Home extends React.Component {
@@ -60,13 +62,23 @@ export default class Home extends React.Component {
     }
   }
 
+  componentDidMount() {
+    fetch('http://laragon.test/bedrock/web/wp-json/wp/v2/posts').then(
+      res => res.json()
+    ).then(
+      data => this.setState({
+        posts: data.map(post => toPost(post))
+      })
+    )
+  }
+
   render () {
     const posts = this.state.posts.map(post => 
       <div key={ post.id } className="post col-12 col-md-4">
         <img src={ post.imgPath }  alt="post image"/>
         <div>
           <h4>{ post.title }</h4>
-          <p>{ post.summary }</p>
+          <p>{ post.content }</p>
           <Link className="btn btn-outline-primary" to={ `/posts/${post.id}` }>Read All
           </Link>
         </div>
