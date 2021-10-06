@@ -1,10 +1,12 @@
 export class Page {
-    constructor (id, title) {
+    constructor (id, name, content) {
+        var stripedHtml = content.replace(/<\/?[^>]+(>|$)/g, "");
+        this.content = stripedHtml;
         this.id = id;
-        this.title = title;
+        this.name = name;
     }
 }
 
 export function toPage(page) {
-    return new Page(page.id, page.title)
+    return new Page(page.id, page.title.rendered, page.content.rendered)
 }

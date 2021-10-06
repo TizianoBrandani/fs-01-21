@@ -5,7 +5,7 @@ export class Post {
         var decodedStripedHtml = stripedHtml;
         this.content = decodedStripedHtml;
         this.id = id;
-        this.imgPath = category == 2 ? 'images/react-logo.png' : 'images/wp-logo.png';
+        this.imgPath = category == 2 ? './images/react-logo.png' : './images/wp-logo.png';
         //this.summary = summary;
         this.title = title;
     }
