@@ -4,9 +4,11 @@
   text-align: center;
 }
 
-/* .post {
-  height: 25rem;
-} */
+.post {
+  height: 50rem;
+  border: 1px solid black;
+  border-radius: 8px;
+}
 
 .post img {
   width: 11rem;

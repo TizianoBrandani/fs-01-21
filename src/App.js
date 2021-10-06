@@ -1,11 +1,12 @@
 import './App.css';
 
 //components
-import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
-import Home from './components/Home';
 import Header from './components/Header';
+import Home from './components/Home';
 import NotFound from './components/NotFound';
+import SingleCategory from './components/SingleCategory';
+import SinglePagePost from './components/SinglePagePost';
 
 //router
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
@@ -22,8 +23,11 @@ function App() {
           <Route path="/home" exact>
             <Home />
           </Route>
-          <Route path="/about-us">
-            <AboutUs />
+          <Route path="/category/:id">
+            <SingleCategory />
+          </Route>
+          <Route path="/:name/:id">
+            <SinglePagePost />
           </Route>
           <Route path="*">
             <NotFound />
@@ -31,7 +35,6 @@ function App() {
         </Switch>
         <Footer />
       </BrowserRouter>
-      
     </div>
   );
 }
