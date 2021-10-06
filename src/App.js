@@ -23,7 +23,7 @@ function App() {
           <Route path="/home" exact>
             <Home />
           </Route>
-          <Route path="/category/:id">
+          <Route path="/category/:id-:name">
             <SingleCategory />
           </Route>
           <Route path="/:name/:id">

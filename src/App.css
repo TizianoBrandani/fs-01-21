@@ -1,16 +1,25 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
 
 .post {
-  height: 50rem;
+  height: 25rem;
   border: 1px solid black;
   border-radius: 8px;
+  text-align: center;
 }
 
 .post img {
   width: 11rem;
   height: 6rem;
+}
+
+.post a {
+  text-decoration: none;
 }
