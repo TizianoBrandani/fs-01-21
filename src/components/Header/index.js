@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { Category, toCategory } from "../../models/Category";
-import { Page, toPage } from "../../models/Page";
+import { toCategory } from "../../models/Category";
+import { toPage } from "../../models/Page";
+
+import { Link } from 'react-router-dom';
 
 export default class Header extends React.Component {
   constructor() {
@@ -35,28 +37,26 @@ export default class Header extends React.Component {
   render() {
     const categories = this.state.categories.filter(category => category.count >= 1).map(category => 
 
-      <a key={`${category.name}${category.id}`}
+      <Link key={`${category.name}${category.id}`}
         className="text-decoration-none btn-outline-dark p-3"
-        href={`http://localhost:3000/category/${category.id}`}>
+        to={`/category/${category.id}-${ category.slug }`}>
         { category.name }
-      </a>
+      </Link>
     )
     const pages = this.state.pages.map(page =>
-      <a key={ `${page.category}${page.id}` }
+      <Link key={ `${page.category}${page.id}` }
         className="text-decoration-none btn-outline-dark p-3"
-        href={`http://localhost:3000/pages/${page.id}`}>
+        to={`/pages/${page.id}`}>
         { page.name }
-      </a>
-
+      </Link>
     )
-    console.log(categories);
-    console.log(this.state.categories);
+
     return (
       <div className="container-fluid header">
         <img src="images/header-logo.png" alt="logo" />
         <div className="navbar-dark bg-primary justify-content-left d-flex">
           <img src="images/site-logo.png" alt="logo" width="60px" height="60px" />
-          <a href="/home" className="text-decoration-none btn-outline-dark p-3">Home</a>
+          <Link to={"/home"} className="text-decoration-none btn-outline-dark p-3">Home</Link>
           { categories }
           { pages }
         </div>

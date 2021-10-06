@@ -1,7 +1,6 @@
 export class Page {
     constructor (id, name, content) {
-        var stripedHtml = content.replace(/<\/?[^>]+(>|$)/g, "");
-        this.content = stripedHtml;
+        this.content = content;
         this.id = id;
         this.name = name;
     }

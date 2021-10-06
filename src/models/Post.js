@@ -1,16 +1,22 @@
 export class Post {
-    constructor(id, title, content, category) {
-        this.category = category == 2 ? 'React' : 'Wordpress';
-        var stripedHtml = content.replace(/<\/?[^>]+(>|$)/g, "");
-        var decodedStripedHtml = stripedHtml;
-        this.content = decodedStripedHtml;
-        this.id = id;
-        this.imgPath = category == 2 ? './images/react-logo.png' : './images/wp-logo.png';
-        //this.summary = summary;
-        this.title = title;
-    }
+  constructor(id, name, content, summary, categories) {
+    this.categories = categories;
+    this.content = content;
+    this.id = id;
+    // let Path = '/images/logo';
+    // Path += categories.forEach((element, ind) => {
+    //   if (ind !== 0) {
+    //     return element;
+    //   } else {
+    //     return '-' + element;
+    //   }
+    // }),
+    this.imgPath = `/images/logo${categories}.png`;
+    this.summary = summary.replace(/<\/?[^>]+(>|$)/g, '');
+    this.name = name;
+  }
 }
 
 export function toPost(post) {
-    return new Post(post.id, post.title.rendered, post.content.rendered, post.categories[0])
+  return new Post(post.id, post.title.rendered, post.content.rendered, post.excerpt.rendered, post.categories[0])
 }

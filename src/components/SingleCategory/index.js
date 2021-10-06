@@ -1,21 +1,41 @@
 import React from 'react';
 
-import { Post, toPost } from '../../models/Post';
+import { toPost } from '../../models/Post';
+import { toCategory } from '../../models/Category';
 
 import { Link, withRouter } from "react-router-dom";
+
+let urlChanged = false;
 
 export class SingleCategory extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      posts: []
+      posts: [],
+      categories: []
     }
   }
 
   componentDidMount() {
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts?categories=${this.props.match.params.id}`).then(
-      res => res.json()
+    this.getPosts();
+  };
+
+  componentDidUpdate () {
+    if(urlChanged) {
+      urlChanged = false;
+
+      return;
+    }
+
+    this.getPosts();
+  }
+
+  getPosts () {
+    urlChanged = true;
+
+    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts?categories=${this.props.match.params.id}`)
+    .then(res => res.json()
     ).then(
       data => this.setState({
         posts: data.map(post => toPost(post))
@@ -29,8 +49,9 @@ export class SingleCategory extends React.Component {
         <img src={post.imgPath}  alt="post-logo"/>
         <div>
           <h4>{ post.title }</h4>
-          <p> { post.content } </p>
-          <Link className="btn btn-outline-primary" to={ `/posts/${post.id}` }>Read All
+          <p dangerouslySetInnerHTML={{ __html: post.summary }}/>
+          <Link className="btn btn-outline-primary" to={ `/posts/${post.id}` }>
+            Read All
           </Link>
         </div>
       </div>
@@ -38,7 +59,8 @@ export class SingleCategory extends React.Component {
 
     return (
       <div className="container">
-        <div className="row g-2">
+        <div className="row gx-3">
+          <h2>You are looking at the { this.props.match.params.name } posts.</h2>
           { posts }
         </div>
       </div>
