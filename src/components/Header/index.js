@@ -40,7 +40,7 @@ export default class Header extends React.Component {
       <Link 
         key={`${category.name}${category.id}`}
         className="text-decoration-none btn-outline-dark p-3"
-        to={`/category/${category.id}-${ category.slug }`}>
+        to={`/category/${ category.slug }/${category.id}`}>
         { category.name }
       </Link>
     );
