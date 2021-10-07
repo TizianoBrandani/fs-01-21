@@ -9,17 +9,29 @@
 }
 
 .post {
-  height: 25rem;
+  height: 24rem;
   border: 1px solid black;
   border-radius: 8px;
   text-align: center;
+  box-shadow: 2px 2px grey;
 }
 
 .post img {
-  width: 11rem;
+  width: 13rem;
   height: 6rem;
 }
 
 .post a {
   text-decoration: none;
+}
+
+.singlePagePost {
+  border: 1px solid black;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 2px 2px grey;
+}
+
+footer p {
+  font-weight: 600;
 }

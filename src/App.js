@@ -6,7 +6,8 @@ import Header from './components/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import SingleCategory from './components/SingleCategory';
-import SinglePagePost from './components/SinglePagePost';
+import SinglePage from './components/SinglePage';
+import SinglePost from './components/SinglePost';
 
 //router
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
@@ -26,8 +27,11 @@ function App() {
           <Route path="/category/:id-:name">
             <SingleCategory />
           </Route>
-          <Route path="/:name/:id">
-            <SinglePagePost />
+          <Route path="/posts/:id">
+            <SinglePost />
+          </Route>
+          <Route path="/pages/:id">
+            <SinglePage />
           </Route>
           <Route path="*">
             <NotFound />

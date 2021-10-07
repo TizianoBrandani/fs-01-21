@@ -6,6 +6,6 @@ export default class NotFound extends React.Component {
       <div className="text-warning">
         <h1>Oops, the page you requested was not found 404 error</h1>
       </div>
-    )
+    );
   }
 }
