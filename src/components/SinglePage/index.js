@@ -14,7 +14,7 @@ export class SinglePagePost extends React.Component {
 
     this.state = {
       page: ''
-    }
+    };
   }
 
   componentDidMount() {
@@ -33,11 +33,19 @@ export class SinglePagePost extends React.Component {
   getPage() {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/pages/${ this.props.match.params.id }`)
-    .then(res => res.json())
-    .then(data => this.setState({
-        page: toPage(data)
-      })
+    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/pages/${ this.props.match.params.id }`
+    ).then(
+      res => res.json()
+    ).then(
+      data => {
+        if(data.data?.status === 404) {
+          this.props.history.push('/not-found');
+          return;
+        }
+        this.setState({
+          post: toPage(data)
+        })
+      }
     );
   }
 
