@@ -1,5 +1,8 @@
 import React from 'react';
 
+import logoHeader from '../../images/header-logo.png';
+import logoNav from '../..//images/site-logo.png';
+
 //models
 import { toCategory } from "../../models/Category";
 import { toPage } from "../../models/Page";
@@ -55,9 +58,9 @@ export default class Header extends React.Component {
 
     return (
       <div className="container-fluid header">
-        <img src="images/header-logo.png" alt="logo" />
+        <img src={ logoHeader } alt="logo" />
         <div className="navbar-dark bg-primary justify-content-left d-flex">
-          <img src="images/site-logo.png" alt="logo" width="60px" height="60px" />
+          <img src={ logoNav } alt="logo" width="60px" height="60px" />
           <Link 
             to={"/home"} 
             className="text-decoration-none btn-outline-dark p-3">

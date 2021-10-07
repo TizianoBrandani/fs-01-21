@@ -44,7 +44,7 @@ export class SinglePagePost extends React.Component {
   render() {
     return (
       <div className="row m-3">
-        <div className="col-12 singlePost">
+        <div className="col-12 singlePagePost">
           <h3>{ this.state.page.name }</h3>
           <p dangerouslySetInnerHTML={{ __html: this.state.page.content }} />
         </div>
