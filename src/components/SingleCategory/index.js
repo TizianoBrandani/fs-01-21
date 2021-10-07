@@ -1,8 +1,9 @@
 import React from 'react';
 
+//models
 import { toPost } from '../../models/Post';
-import { toCategory } from '../../models/Category';
 
+//router
 import { Link, withRouter } from "react-router-dom";
 
 let urlChanged = false;
@@ -12,8 +13,7 @@ export class SingleCategory extends React.Component {
     super();
 
     this.state = {
-      posts: [],
-      categories: []
+      posts: []
     }
   }
 
@@ -24,10 +24,8 @@ export class SingleCategory extends React.Component {
   componentDidUpdate () {
     if(urlChanged) {
       urlChanged = false;
-
       return;
     }
-
     this.getPosts();
   }
 
@@ -40,31 +38,31 @@ export class SingleCategory extends React.Component {
       data => this.setState({
         posts: data.map(post => toPost(post))
       })
-    )
+    );
   }
 
   render() {
     const posts = this.state.posts.map(post => 
-      <div key={ post.id } className="post col-12 col-md-4">
+      <div key={ post.id } className="post col-12 my-3 col-md-4">
         <img src={post.imgPath}  alt="post-logo"/>
         <div>
-          <h4>{ post.title }</h4>
-          <p dangerouslySetInnerHTML={{ __html: post.summary }}/>
+          <h4>{ post.name }</h4>
+          <p dangerouslySetInnerHTML={{ __html: post.summary }} />
           <Link className="btn btn-outline-primary" to={ `/posts/${post.id}` }>
             Read All
           </Link>
         </div>
       </div>
-    )
+    );
 
     return (
       <div className="container">
-        <div className="row gx-3">
+        <div className="row m-3 gx-3">
           <h2>You are looking at the { this.props.match.params.name } posts.</h2>
           { posts }
         </div>
       </div>
-    )
+    );
   }
 }
 
