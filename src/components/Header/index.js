@@ -42,16 +42,16 @@ export default class Header extends React.Component {
     const categories = this.state.categories.filter(category => category.count >= 1)
     .map(category => 
       <Link 
-        key={`${category.name}${category.id}`}
+        key={ `${category.name}${category.id}` }
         className="text-decoration-none btn-outline-dark p-3"
-        to={`/category/${ category.slug }/${ category.id }`}>
+        to={ `/category/${ category.slug }/${ category.id }` }>
         { category.name }
       </Link>
     );
     const pages = this.state.pages.map(page =>
       <Link key={ `${ page.category }${ page.id }` }
         className="text-decoration-none btn-outline-dark p-3"
-        to={`/pages/${ page.id }`}>
+        to={ `/pages/${ page.id }` }>
         { page.name }
       </Link>
     );
@@ -62,7 +62,7 @@ export default class Header extends React.Component {
         <div className="navbar-dark bg-primary justify-content-left d-flex">
           <img src={ logoNav } alt="logo" width="60px" height="60px" />
           <Link 
-            to={"/home"} 
+            to={ "/" } 
             className="text-decoration-none btn-outline-dark p-3">
             Home
           </Link>

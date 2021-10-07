@@ -15,7 +15,7 @@ export class SinglePost extends React.Component {
     this.state = {
       post: ''
     };
-  }
+  };
 
   componentDidMount() {
     this.getPost();
@@ -33,15 +33,15 @@ export class SinglePost extends React.Component {
   getPost() {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts/${ this.props.match.params.id }`
-    ).then(
+    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts/${ this.props.match.params.id }`).then(
       res => res.json()
     ).then(
       data => {
-        if(data.data?.status === 404) {
+        if ( data.data?.status === 404 ) {
           this.props.history.push('/not-found');
           return;
         }
+
         this.setState({
         post: toPost(data)
         })
@@ -58,7 +58,7 @@ export class SinglePost extends React.Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default withRouter(SinglePost);

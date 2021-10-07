@@ -13,11 +13,10 @@ export default class Home extends React.Component {
     this.state = {
       posts: []
     };
-  }
+  };
 
   componentDidMount() {
-    fetch('http://laragon.test/bedrock/web/wp-json/wp/v2/posts'
-    ).then(
+    fetch('http://laragon.test/bedrock/web/wp-json/wp/v2/posts').then(
       res => res.json()
     ).then(
       data => this.setState({
@@ -49,5 +48,5 @@ export default class Home extends React.Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};

@@ -15,39 +15,39 @@ export class SinglePagePost extends React.Component {
     this.state = {
       page: ''
     };
-  }
+  };
 
   componentDidMount() {
     this.getPage();
   };
 
   componentDidUpdate() {
-    if (urlChanged) {
+    if ( urlChanged ) {
       urlChanged = false;
       return;
-    }
+    };
 
     this.getPage();
-  }
+  };
 
   getPage() {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/pages/${ this.props.match.params.id }`
-    ).then(
+    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/pages/${ this.props.match.params.id }`).then(
       res => res.json()
     ).then(
       data => {
-        if(data.data?.status === 404) {
+        if( data.data?.status === 404 ) {
           this.props.history.push('/not-found');
           return;
-        }
+        };
+
         this.setState({
-          post: toPage(data)
+          page: toPage(data)
         })
       }
     );
-  }
+  };
 
   render() {
     return (
@@ -58,7 +58,7 @@ export class SinglePagePost extends React.Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default withRouter(SinglePagePost);

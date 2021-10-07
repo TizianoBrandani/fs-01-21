@@ -21,9 +21,6 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/home" exact>
-            <Home />
-          </Route>
           <Route path="/category/:name/:id">
             <SingleCategory />
           </Route>

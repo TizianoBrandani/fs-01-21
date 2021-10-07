@@ -15,38 +15,39 @@ export class SingleCategory extends React.Component {
     this.state = {
       posts: []
     };
-  }
+  };
 
   componentDidMount() {
     this.getPosts();
   };
 
   componentDidUpdate () {
-    if(urlChanged) {
+    if ( urlChanged ) {
       urlChanged = false;
       return;
     }
+
     this.getPosts();
-  }
+  };
 
   getPosts () {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts?categories=${ this.props.match.params.id }`
-    ).then(
+    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts?categories=${ this.props.match.params.id }`).then(
       res => res.json()
     ).then(
       data => {
-        if(!data.length) {
+        if ( !data.length ) {
           this.props.history.push('/not-found');
           return;
-        }
+        };
+
         this.setState({
           posts: data.map(post => toPost(post))
         })
       }
     );
-  }
+  };
 
   render() {
     const posts = this.state.posts.map(post => 
@@ -70,7 +71,7 @@ export class SingleCategory extends React.Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default withRouter(SingleCategory);
