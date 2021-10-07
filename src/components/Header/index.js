@@ -45,7 +45,7 @@ export default class Header extends React.Component {
     .map(category => 
       <li className="nav-item">
         <Link 
-          key={ `${category.name}${category.id}` }
+          key={ `${ category.name }${ category.id }` }
           className="p-3 nav-link active"
           to={ `/category/${ category.slug }/${ category.id }` }>
           { category.name }
@@ -54,7 +54,8 @@ export default class Header extends React.Component {
     );
     const pages = this.state.pages.map(page => 
       <li className="nav-item">
-        <Link key={ `${ page.category }${ page.id }` }
+        <Link
+          key={ `${ page.category }${ page.id }` }
           className="p-3 nav-link active"
           aria-current="page"
           to={ `/pages/${ page.id }` }>
