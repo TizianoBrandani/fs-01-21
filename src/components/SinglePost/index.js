@@ -17,11 +17,11 @@ export class SinglePost extends React.Component {
     this.state = {
       post: ''
     };
-  };
+  }
 
   componentDidMount() {
     this.getPost();
-  };
+  }
 
   componentDidUpdate() {
     if (urlChanged) {
@@ -49,7 +49,7 @@ export class SinglePost extends React.Component {
         });
       }
     );
-  };
+  }
 
   render() {
     return (
@@ -61,7 +61,7 @@ export class SinglePost extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default withRouter(SinglePost);

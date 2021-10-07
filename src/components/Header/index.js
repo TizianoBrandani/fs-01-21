@@ -43,34 +43,61 @@ export default class Header extends React.Component {
   render() {
     const categories = this.state.categories.filter(category => category.count >= 1)
     .map(category => 
-      <Link 
-        key={ `${category.name}${category.id}` }
-        className="text-decoration-none btn-outline-dark p-3"
-        to={ `/category/${ category.slug }/${ category.id }` }>
-        { category.name }
-      </Link>
+      <li className="nav-item">
+        <Link 
+          key={ `${category.name}${category.id}` }
+          className="p-3 nav-link active"
+          to={ `/category/${ category.slug }/${ category.id }` }>
+          { category.name }
+        </Link>
+      </li>
     );
-    const pages = this.state.pages.map(page =>
-      <Link key={ `${ page.category }${ page.id }` }
-        className="text-decoration-none btn-outline-dark p-3"
-        to={ `/pages/${ page.id }` }>
-        { page.name }
-      </Link>
+    const pages = this.state.pages.map(page => 
+      <li className="nav-item">
+        <Link key={ `${ page.category }${ page.id }` }
+          className="p-3 nav-link active"
+          aria-current="page"
+          to={ `/pages/${ page.id }` }>
+          { page.name }
+        </Link>
+      </li>
     );
 
     return (
       <div className="container-fluid header">
         <img src={ logoHeader } alt="logo" />
-        <div className="navbar-dark bg-primary justify-content-left d-flex">
-          <img src={ logoNav } alt="logo" width="60px" height="60px" />
-          <Link 
-            to={ "/" } 
-            className="text-decoration-none btn-outline-dark p-3">
-            Home
-          </Link>
-          { categories }
-          { pages }
-        </div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">
+              <img src={ logoNav } alt="logo" />
+            </a>
+            <button 
+              className="navbar-toggler" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link
+                    className="p-3 nav-link active"
+                    aria-current="page"
+                    to={ '/'}>
+                    Home
+                  </Link>
+                </li>
+                { categories }
+                { pages }
+              </ul>
+            </div>
+          </div>
+        </nav>
       </div>
     );
   }

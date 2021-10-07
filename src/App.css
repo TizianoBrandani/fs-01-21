@@ -4,8 +4,25 @@
   box-sizing: border-box;
 }
 
+body {
+  text-align: justify;
+}
+
 .App {
   text-align: center;
+}
+
+nav {
+  padding: 0 !important;
+}
+
+li:hover {
+  background-color: lightblue;
+}
+
+a img {
+  width: 4rem;
+  height: 4rem;
 }
 
 .post {

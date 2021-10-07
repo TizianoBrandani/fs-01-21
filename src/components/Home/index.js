@@ -29,23 +29,25 @@ export default class Home extends React.Component {
 
   render () {
     const posts = this.state.posts.map(post => 
-      <div key={ post.id } className="post my-3 col-12 col-md-4">
-        <img src={ post.imgPath }  alt="post-logo"/>
-        <div>
-          <h4>{ post.name }</h4>
-          <p dangerouslySetInnerHTML={{ __html: post.summary }}/>
-          <Link 
-            className="btn btn-outline-primary" 
-            to={ `/posts/${ post.id }` }>
-            Read All
-          </Link>
+      <div key={ post.id } className="col-12 col-md-4 my-3">
+        <div className="p-4 post">
+          <img src={ post.imgPath }  alt="post-logo"/>
+          <div>
+            <h4>{ post.name }</h4>
+            <p dangerouslySetInnerHTML={{ __html: post.summary }}/>
+            <Link 
+              className="btn btn-outline-primary" 
+              to={ `/posts/${ post.id }` }>
+              Read All
+            </Link>
+          </div>
         </div>
       </div>
     );
 
     return (
       <div className="container">
-        <div className="row my-3 g-5">
+        <div className="row my-3">
           { posts }
         </div>
       </div>

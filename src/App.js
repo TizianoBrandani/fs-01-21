@@ -12,6 +12,9 @@ import SinglePost from './components/SinglePost';
 //router
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
+//bootstrap js
+import 'bootstrap/dist/js/bootstrap';
+
 function App() {
   return (
     <div className="App">

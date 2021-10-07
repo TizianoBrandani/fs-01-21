@@ -16,12 +16,12 @@ export class SingleCategory extends React.Component {
 
     this.state = {
       posts: []
-    };
-  };
+    }
+  }
 
   componentDidMount() {
     this.getPosts();
-  };
+  }
 
   componentDidUpdate () {
     if ( urlChanged ) {
@@ -30,7 +30,7 @@ export class SingleCategory extends React.Component {
     }
 
     this.getPosts();
-  };
+  }
 
   getPosts () {
     urlChanged = true;
@@ -49,7 +49,7 @@ export class SingleCategory extends React.Component {
         });
       }
     );
-  };
+  }
 
   render() {
     const posts = this.state.posts.map(post => 
@@ -73,7 +73,7 @@ export class SingleCategory extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default withRouter(SingleCategory);

@@ -16,21 +16,21 @@ export class SinglePagePost extends React.Component {
 
     this.state = {
       page: ''
-    };
-  };
+    }
+  }
 
   componentDidMount() {
     this.getPage();
-  };
+  }
 
   componentDidUpdate() {
     if ( urlChanged ) {
       urlChanged = false;
       return;
-    };
+    }
 
     this.getPage();
-  };
+  }
 
   getPage() {
     urlChanged = true;
@@ -49,7 +49,7 @@ export class SinglePagePost extends React.Component {
         })
       }
     );
-  };
+  }
 
   render() {
     return (
@@ -60,7 +60,7 @@ export class SinglePagePost extends React.Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default withRouter(SinglePagePost);
