@@ -32,6 +32,11 @@
   box-shadow: 2px 2px grey;
 }
 
+.singlePagePost .post-img {
+  width: 12rem;
+  height: 6rem;
+}
+
 footer p {
   font-weight: 600;
 }

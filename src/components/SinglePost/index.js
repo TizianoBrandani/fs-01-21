@@ -1,5 +1,7 @@
 import React from 'react';
 
+import URL from "../../constants";
+
 //models
 import { toPost } from '../../models/Post';
 
@@ -28,12 +30,12 @@ export class SinglePost extends React.Component {
     }
 
     this.getPost();
-  }
+  };
 
   getPost() {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts/${ this.props.match.params.id }`).then(
+    fetch(`${ URL }/posts/${ this.props.match.params.id }`).then(
       res => res.json()
     ).then(
       data => {
@@ -44,15 +46,16 @@ export class SinglePost extends React.Component {
 
         this.setState({
         post: toPost(data)
-        })
+        });
       }
     );
-  }
+  };
 
   render() {
     return (
       <div className="row m-3">
         <div className="col-12 singlePagePost">
+          <img className='post-img' src={ this.state.post.imgPath} alt="post-logo" />
           <h3>{ this.state.post.name }</h3>
           <p dangerouslySetInnerHTML={{ __html: this.state.post.content }}/>
         </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import URL from "../../constants";
+
 //models
 import { toPage } from '../../models/Page';
 
@@ -33,7 +35,7 @@ export class SinglePagePost extends React.Component {
   getPage() {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/pages/${ this.props.match.params.id }`).then(
+    fetch(`${ URL }/pages/${ this.props.match.params.id }`).then(
       res => res.json()
     ).then(
       data => {

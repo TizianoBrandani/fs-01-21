@@ -1,5 +1,7 @@
 import React from "react";
 
+import URL from "../../constants";
+
 //models
 import { toPost } from "../../models/Post";
 
@@ -16,14 +18,14 @@ export default class Home extends React.Component {
   };
 
   componentDidMount() {
-    fetch('http://laragon.test/bedrock/web/wp-json/wp/v2/posts').then(
+    fetch(`${ URL }/posts`).then(
       res => res.json()
     ).then(
       data => this.setState({
         posts: data.map(post => toPost(post))
       })
     );
-  }
+  };
 
   render () {
     const posts = this.state.posts.map(post => 

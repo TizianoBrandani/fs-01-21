@@ -1,5 +1,7 @@
 import React from 'react';
 
+import URL from '../../constants';
+
 //models
 import { toPost } from '../../models/Post';
 
@@ -33,7 +35,7 @@ export class SingleCategory extends React.Component {
   getPosts () {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/posts?categories=${ this.props.match.params.id }`).then(
+    fetch(`${ URL }/posts?categories=${ this.props.match.params.id }`).then(
       res => res.json()
     ).then(
       data => {
@@ -44,7 +46,7 @@ export class SingleCategory extends React.Component {
 
         this.setState({
           posts: data.map(post => toPost(post))
-        })
+        });
       }
     );
   };

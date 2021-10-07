@@ -1,5 +1,7 @@
 import React from 'react';
 
+import URL from "../../constants";
+
 import logoHeader from '../../images/header-logo.png';
 import logoNav from '../..//images/site-logo.png';
 
@@ -21,7 +23,7 @@ export default class Header extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://laragon.test/bedrock/web/wp-json/wp/v2/categories').then(
+    fetch(`${ URL }/categories`).then(
       res => res.json()
     ).then(
       data => this.setState({
@@ -29,7 +31,7 @@ export default class Header extends React.Component {
       })
     );
 
-    fetch('http://laragon.test/bedrock/web/wp-json/wp/v2/pages').then(
+    fetch(`${ URL }/pages`).then(
       res => res.json()
     ).then(
       data => this.setState({
