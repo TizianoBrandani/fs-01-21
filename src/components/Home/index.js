@@ -33,7 +33,7 @@ export default class Home extends React.Component {
           <p dangerouslySetInnerHTML={{ __html: post.summary }}/>
           <Link 
             className="btn btn-outline-primary" 
-            to={ `/posts/${post.id}` }>
+            to={ `/posts/${ post.id }` }>
             Read All
           </Link>
         </div>

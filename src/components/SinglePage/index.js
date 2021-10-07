@@ -33,7 +33,7 @@ export class SinglePagePost extends React.Component {
   getPage() {
     urlChanged = true;
 
-    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/pages/${this.props.match.params.id}`)
+    fetch(`http://laragon.test/bedrock/web/wp-json/wp/v2/pages/${ this.props.match.params.id }`)
     .then(res => res.json())
     .then(data => this.setState({
         page: toPage(data)
@@ -45,7 +45,7 @@ export class SinglePagePost extends React.Component {
     return (
       <div className="row m-3">
         <div className="col-12 singlePost">
-          <h3>{this.state.page.name}</h3>
+          <h3>{ this.state.page.name }</h3>
           <p dangerouslySetInnerHTML={{ __html: this.state.page.content }} />
         </div>
       </div>

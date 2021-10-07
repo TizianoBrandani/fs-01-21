@@ -34,7 +34,7 @@ export class SinglePost extends React.Component {
     urlChanged = true;
 
     fetch(
-      `http://laragon.test/bedrock/web/wp-json/wp/v2/posts/${this.props.match.params.id}`)
+      `http://laragon.test/bedrock/web/wp-json/wp/v2/posts/${ this.props.match.params.id }`)
     .then(res => res.json())
     .then(data => this.setState({
         post: toPost(data)
